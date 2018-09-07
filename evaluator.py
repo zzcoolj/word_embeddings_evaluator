@@ -3,16 +3,25 @@ import pickle
 import os
 import pandas as pd
 
+import sys
+sys.path.insert(0, '../common/')
+import common
+
 
 class Evaluator(object):
 
     def __init__(self, tokens):
         self.tokens = tokens
-        self.gensim_word_vectors = None
 
-    def convert_into_gensim_format(self, vector_matrix_path):
-        gensim_word_vectors_path = vector_matrix_path.split('.')[0] + '_embeddings.csv'
-        with open(vector_matrix_path) as matrix:
+    @classmethod
+    def from_storage(cls, tokens_path):
+        tokens = common.read_pickle(tokens_path)
+        return cls(tokens)
+
+    @staticmethod
+    def _convert_into_gensim_format(matrix_path):
+        gensim_word_vectors_path = matrix_path.split('.')[0] + '_embeddings.csv'
+        with open(matrix_path) as matrix:
             with open(gensim_word_vectors_path, 'w') as output:
                 vector = matrix.readline()
                 dimension = len(vector.split(','))
@@ -23,19 +32,23 @@ class Evaluator(object):
                     vector = matrix.readline()
                     vector = vector.replace(',', ' ')
                     output.write(tokens[i] + ' ' + vector)
-        self.gensim_word_vectors = KeyedVectors.load_word2vec_format(gensim_word_vectors_path).wv
+        gensim_word_vectors = KeyedVectors.load_word2vec_format(gensim_word_vectors_path).wv
+        return gensim_word_vectors
 
-    def evaluate(self):
+    def evaluate(self, matrix_path):
+        gensim_word_vectors = self._convert_into_gensim_format(matrix_path)
+
         # evaluation results
-        labels1, results1 = self.evaluation_questions_words()
+        labels1, results1 = self.evaluation_questions_words(gensim_word_vectors)
         # self.print_lables_results(labels1, results1)
-        labels2, results2 = self.evaluation_word_pairs(path='data/wordsim353/combined.tab')
+        labels2, results2 = self.evaluation_word_pairs(gensim_word_vectors, evaluation_data_path='data/wordsim353/combined.tab')
         # eval.print_lables_results(labels2, results2)
-        labels3, results3 = self.evaluation_word_pairs(path='data/simlex999.txt')
+        labels3, results3 = self.evaluation_word_pairs(gensim_word_vectors, evaluation_data_path='data/simlex999.txt')
         # eval.print_lables_results(labels3, results3)
         return results2 + results3 + results1
 
-    def print_lables_results(self, labels, results):
+    @staticmethod
+    def print_lables_results(labels, results):
         if len(labels) != len(results):
             print('[ERROR] labels and results do not have the same length')
             exit()
@@ -44,8 +57,9 @@ class Evaluator(object):
             to_print += labels[i] + ': ' + str(results[i]) + ';\t'
         print(to_print)
 
-    def evaluation_questions_words(self, path='data/questions-words.txt'):
-        accuracy = self.gensim_word_vectors.accuracy(path)  # 4478
+    @staticmethod
+    def evaluation_questions_words(gensim_word_vectors, evaluation_data_path='data/questions-words.txt'):
+        accuracy = gensim_word_vectors.accuracy(evaluation_data_path)  # 4478
 
         sem_correct = sum((len(accuracy[i]['correct']) for i in range(5)))
         sem_total = sum((len(accuracy[i]['correct']) + len(accuracy[i]['incorrect'])) for i in range(5))
@@ -64,14 +78,15 @@ class Evaluator(object):
         results = [sem_acc, sem_total, syn_acc, syn_total, total_acc, total]
         return labels, results
 
-    def evaluation_word_pairs(self, path):
+    @staticmethod
+    def evaluation_word_pairs(gensim_word_vectors, evaluation_data_path):
         """ Result of evaluate_word_pairs contains 3 parts:
         ((0.43915524919358867, 2.3681259690228147e-13),                                     Pearson
         SpearmanrResult(correlation=0.44614214937080449, pvalue=8.8819867392097872e-14),    Spearman
         28.328611898016998)                                                                 ratio of pairs with unknown
                                                                                             words (float)
         """
-        evaluation = self.gensim_word_vectors.evaluate_word_pairs(path)
+        evaluation = gensim_word_vectors.evaluate_word_pairs(evaluation_data_path)
         labels = ['Pearson correlation', 'Pearson pvalue', 'Spearman correlation', 'Spearman pvalue',
                   'Ration of pairs with OOV']
         results = [evaluation[0][0], evaluation[0][1], evaluation[1][0], evaluation[1][1], evaluation[2]]
@@ -96,9 +111,9 @@ class Evaluator(object):
         ])
         i = 0
         for file in files:
-            self.convert_into_gensim_format(vector_matrix_path=file)
-            df.loc[i] = [file] + self.evaluate()
-            print([file] + self.evaluate())
+            temp = [file] + self.evaluate(file)
+            df.loc[i] = temp
+            print(temp)
             i += 1
         writer = pd.ExcelWriter(excel_path)
         df.to_excel(writer, 'Sheet1')
@@ -127,6 +142,12 @@ if __name__ == '__main__':
         word_ids = pickle.load(fp)
     tokens = [wordId2word[wordId] for wordId in word_ids]
 
+    # # This blocked code is for generating tokens file corresponding to the negative examples matrix
+    # with open("/Users/zzcoolj/Desktop/ns/random walk/random_walk_tokens.txt", 'w') as resultFile:
+    #     for token in tokens:
+    #         resultFile.write(token+'\n')
+    # exit()
+
     e = Evaluator(tokens=tokens)
     e.evaluate_all_word_embeddings_files_in_folder(folder_path='/Users/zzcoolj/Desktop/GoW_new_ideas/embeddings/new/',
-                                                   excel_path='/Users/zzcoolj/Desktop/GoW_new_ideas/embeddings/new/result.xlsx')
+                                                   excel_path='/Users/zzcoolj/Desktop/GoW_new_ideas/embeddings/new/plus.xlsx')
