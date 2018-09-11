@@ -24,7 +24,7 @@ class Evaluator(object):
 
         if matrix_type == 'csv':  # for matrix provided by Sibo generated in matlab
             with open(matrix_path) as matrix:
-                with open(gensim_word_vectors_path, 'w') as output:
+                with open(gensim_word_vectors_path, 'w', encoding='utf-8') as output:
                     vector = matrix.readline()
                     dimension = len(vector.split(','))
                     output.write(str(len(self.tokens)) + ' ' + str(dimension) + '\n')  # First line
@@ -165,5 +165,5 @@ if __name__ == '__main__':
     #         resultFile.write(token+'\n')
     # exit()
 
-    e = Evaluator.from_storage('/Users/zzcoolj/Desktop/encoded_edges_count_window_size_2_undirected_tokens.pickle')
-    print(e.evaluate('/Users/zzcoolj/Desktop/ppmi_svd_w2_d200.npy', matrix_type='npy'))
+    # e = Evaluator.from_storage('/Users/zzcoolj/Desktop/encoded_edges_count_window_size_2_undirected_tokens.pickle')
+    # print(e.evaluate('/Users/zzcoolj/Desktop/ppmi_svd_w2_d200.npy', matrix_type='npy'))
