@@ -165,5 +165,5 @@ if __name__ == '__main__':
     #         resultFile.write(token+'\n')
     # exit()
 
-    e = Evaluator.from_storage('../matrix2vec/output/encoded_edges_count_window_size_5_undirected_tokens.pickle')
-    print(e.evaluate('../matrix2vec/test.npy', matrix_type='npy'))
+    # e = Evaluator.from_storage('../matrix2vec/output/encoded_edges_count_window_size_5_undirected_tokens.pickle')
+    # print(e.evaluate('../matrix2vec/test.npy', matrix_type='npy'))
