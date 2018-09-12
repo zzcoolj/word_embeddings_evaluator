@@ -9,6 +9,7 @@ import multi_processing
 '''
 Evaluate results in matrix2vec/output/vectors/ppmi_svd
 Evaluate results in matrix2vec/output/vectors/firstOrder_svd
+Evaluate results in matrix2vec/output/vectors/rw0_svd
 '''
 
 
@@ -50,4 +51,7 @@ def evaluate_folder(folder_path, file_prefix):
 
 
 # evaluate_folder(folder_path='../matrix2vec/output/vectors/ppmi_svd/', file_prefix='ppmi_svd_')
-evaluate_folder(folder_path='../matrix2vec/output/vectors/firstOrder_svd/', file_prefix='firstOrder_svd_')
+# evaluate_folder(folder_path='../matrix2vec/output/vectors/firstOrder_svd/', file_prefix='firstOrder_svd_')
+evaluate_folder(folder_path='../matrix2vec/output/vectors/rw0_svd/', file_prefix='rw0_svd_')
+evaluate_folder(folder_path='../matrix2vec/output/vectors/rw1_svd/', file_prefix='rw1_svd_')
+evaluate_folder(folder_path='../matrix2vec/output/vectors/rw2_svd/', file_prefix='rw2_svd_')
