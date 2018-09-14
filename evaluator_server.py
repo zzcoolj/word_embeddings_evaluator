@@ -99,3 +99,4 @@ def evaluate_folder_bis(folder_path, window_size):
 
 
 evaluate_folder_bis(folder_path='../matrix2vec/output/vectors/ppmi+firstOrder_svd/', window_size=5)
+# test
