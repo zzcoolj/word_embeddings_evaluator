@@ -80,8 +80,7 @@ def evaluate_folder_bis(folder_path, window_size, file_name_prefix):
 
     e = evaluator.Evaluator.from_storage(
         tokens_path='../matrix2vec/input/encoded_edges_count_window_size_' + str(window_size) + '_undirected_tokens.pickle')
-    # for k in [0.1, 0.2, 0.5, 1, 2, 5, 10, 20, 50, 100]:
-    for k in [-0.1, -0.2, -0.5, -1, -2, -5, -10, -20, -50, -100]:
+    for k in [0.1, 0.2, 0.5, 1, 2, 5, 10, 20, 50, 100, -0.1, -0.2, -0.5, -1, -2, -5, -10, -20, -50, -100]:
         file_name = file_name_prefix+str(k)+'_svd_d500'
         result = e.evaluate(folder_path + file_name + '.npy', matrix_type='npy')
         df.loc[i] = [file_name] + result
@@ -101,4 +100,5 @@ def evaluate_folder_bis(folder_path, window_size, file_name_prefix):
 
 
 # evaluate_folder_bis(folder_path='../matrix2vec/output/vectors/ppmi+firstOrder_svd/', window_size=5, file_name_prefix='ppmi_w5_+firstOrder_w5_k')
-evaluate_folder_bis(folder_path='../matrix2vec/output/vectors/ppmi+rw1_svd/', window_size=5, file_name_prefix='ppmi_w5_+rw1_w7_k')
+# evaluate_folder_bis(folder_path='../matrix2vec/output/vectors/ppmi+rw1_svd/', window_size=5, file_name_prefix='ppmi_w5_+rw1_w7_k')
+evaluate_folder_bis(folder_path='../matrix2vec/output/vectors/ppmi+rw2_svd/', window_size=5, file_name_prefix='ppmi_w5_+rw2_w3_k')
