@@ -79,7 +79,7 @@ def evaluate_folder_bis(folder_path, window_size):
 
     e = evaluator.Evaluator.from_storage(
         tokens_path='../matrix2vec/input/encoded_edges_count_window_size_' + str(window_size) + '_undirected_tokens.pickle')
-    for k in [0.1, 0.2, 0.5, 1, 2, 5, 10, 20, 50, 100]:
+    for k in [-0.1, -0.2, -0.5, -1, -2, -5, -10, -20, -50, -100]:
         file_name = 'ppmi_w5_+firstOrder_w5_k'+str(k)+'_svd_d500'
         result = e.evaluate(folder_path + file_name + '.npy', matrix_type='npy')
         df.loc[i] = [file_name] + result
