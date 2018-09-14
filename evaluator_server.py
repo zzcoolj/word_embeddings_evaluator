@@ -59,10 +59,11 @@ def evaluate_folder(folder_path, file_prefix):
 
 """
 Evaluate results in ppmi+firstOrder_svd
+Evaluate results in ppmi+rw1_svd
 """
 
 
-def evaluate_folder_bis(folder_path, window_size):
+def evaluate_folder_bis(folder_path, window_size, file_name_prefix):
     df = pd.DataFrame(columns=[
                 # word embeddings file name
                 'file name',
@@ -79,8 +80,9 @@ def evaluate_folder_bis(folder_path, window_size):
 
     e = evaluator.Evaluator.from_storage(
         tokens_path='../matrix2vec/input/encoded_edges_count_window_size_' + str(window_size) + '_undirected_tokens.pickle')
-    for k in [-0.1, -0.2, -0.5, -1, -2, -5, -10, -20, -50, -100]:
-        file_name = 'ppmi_w5_+firstOrder_w5_k'+str(k)+'_svd_d500'
+    for k in [0.1, 0.2, 0.5, 1, 2, 5, 10, 20, 50, 100]:
+    # for k in [-0.1, -0.2, -0.5, -1, -2, -5, -10, -20, -50, -100]:
+        file_name = file_name_prefix+str(k)+'_svd_d500'
         result = e.evaluate(folder_path + file_name + '.npy', matrix_type='npy')
         df.loc[i] = [file_name] + result
         print([file_name] + result)
@@ -98,4 +100,5 @@ def evaluate_folder_bis(folder_path, window_size):
         os.remove(file_path)
 
 
-evaluate_folder_bis(folder_path='../matrix2vec/output/vectors/ppmi+firstOrder_svd/', window_size=5)
+# evaluate_folder_bis(folder_path='../matrix2vec/output/vectors/ppmi+firstOrder_svd/', window_size=5, file_name_prefix='ppmi_w5_+firstOrder_w5_k')
+evaluate_folder_bis(folder_path='../matrix2vec/output/vectors/ppmi+rw1_svd/', window_size=5, file_name_prefix='ppmi_w5_+rw1_w7_k')
