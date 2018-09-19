@@ -50,11 +50,11 @@ def evaluate_folder(folder_path, file_prefix):
         os.remove(file_path)
 
 
-# evaluate_folder(folder_path='../matrix2vec/output/vectors/ppmi_svd/', file_prefix='ppmi_svd_')
-# evaluate_folder(folder_path='../matrix2vec/output/vectors/firstOrder_svd/', file_prefix='firstOrder_svd_')
-# evaluate_folder(folder_path='../matrix2vec/output/vectors/rw0_svd/', file_prefix='rw0_svd_')
-# evaluate_folder(folder_path='../matrix2vec/output/vectors/rw1_svd/', file_prefix='rw1_svd_')
-# evaluate_folder(folder_path='../matrix2vec/output/vectors/rw2_svd/', file_prefix='rw2_svd_')
+evaluate_folder(folder_path='../matrix2vec/output/vectors/cooc_normalized_svd/', file_prefix='cooc_normalized_svd_')
+evaluate_folder(folder_path='../matrix2vec/output/vectors/firstOrder_normalized_svd/', file_prefix='firstOrder_normalized_svd_')
+evaluate_folder(folder_path='../matrix2vec/output/vectors/rw0_normalized_svd/', file_prefix='rw0_normalized_svd_')
+evaluate_folder(folder_path='../matrix2vec/output/vectors/rw1_normalized_svd/', file_prefix='rw1_normalized_svd_')
+evaluate_folder(folder_path='../matrix2vec/output/vectors/rw2_normalized_svd/', file_prefix='rw2_normalized_svd_')
 
 
 """
@@ -101,4 +101,4 @@ def evaluate_folder_bis(folder_path, window_size, file_name_prefix):
 
 # evaluate_folder_bis(folder_path='../matrix2vec/output/vectors/ppmi+firstOrder_svd/', window_size=5, file_name_prefix='ppmi_w5_+firstOrder_w5_k')
 # evaluate_folder_bis(folder_path='../matrix2vec/output/vectors/ppmi+rw1_svd/', window_size=5, file_name_prefix='ppmi_w5_+rw1_w7_k')
-evaluate_folder_bis(folder_path='../matrix2vec/output/vectors/ppmi+rw2_svd/', window_size=5, file_name_prefix='ppmi_w5_+rw2_w3_k')
+# evaluate_folder_bis(folder_path='../matrix2vec/output/vectors/ppmi+rw2_svd/', window_size=5, file_name_prefix='ppmi_w5_+rw2_w3_k')
