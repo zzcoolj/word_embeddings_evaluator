@@ -110,3 +110,5 @@ specific
 '''
 e = evaluator.Evaluator.from_storage(tokens_path='../matrix2vec/input/encoded_edges_count_window_size_5_undirected_tokens.pickle')
 print(e.evaluate(matrix_path='../matrix2vec/output/vectors/specific/specific_k-1_svd_d500.npy', matrix_type='npy'))
+print(e.evaluate(matrix_path='../matrix2vec/output/vectors/specific/specific_k-1_svd_d800.npy', matrix_type='npy'))
+print(e.evaluate(matrix_path='../matrix2vec/output/vectors/specific/specific_k-1_svd_d1000.npy', matrix_type='npy'))
