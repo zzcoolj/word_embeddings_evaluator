@@ -103,4 +103,10 @@ def evaluate_folder_bis(folder_path, window_size, file_name_prefix):
 # evaluate_folder_bis(folder_path='../matrix2vec/output/vectors/ppmi+firstOrder_svd/', window_size=5, file_name_prefix='ppmi_w5_+firstOrder_w5_k')
 # evaluate_folder_bis(folder_path='../matrix2vec/output/vectors/ppmi+rw1_svd/', window_size=5, file_name_prefix='ppmi_w5_+rw1_w7_k')
 # evaluate_folder_bis(folder_path='../matrix2vec/output/vectors/ppmi+rw2_svd/', window_size=5, file_name_prefix='ppmi_w5_+rw2_w3_k')
-evaluate_folder_bis(folder_path='../matrix2vec/output/vectors/cooc_firstOrder_normalized_svd/', window_size=5, file_name_prefix='cooc_w5_firstOrder_w5_normalized_k')
+# evaluate_folder_bis(folder_path='../matrix2vec/output/vectors/cooc_firstOrder_normalized_svd/', window_size=5, file_name_prefix='cooc_w5_firstOrder_w5_normalized_k')
+
+'''
+specific
+'''
+e = evaluator.Evaluator.from_storage(tokens_path='../matrix2vec/input/encoded_edges_count_window_size_5_undirected_tokens.pickle')
+print(e.evaluate(matrix_path='../matrix2vec/output/vectors/specific/specific_k-1_svd_d500.npy', matrix_type='npy'))
