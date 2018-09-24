@@ -116,3 +116,6 @@ e = evaluator.Evaluator.from_storage(tokens_path='../matrix2vec/input/encoded_ed
 # print(e.evaluate(matrix_path='../matrix2vec/output/vectors/specific/specific_k-1_svd_d800.npy', matrix_type='npy'))
 # print(e.evaluate(matrix_path='../matrix2vec/output/vectors/specific/specific_k-1_svd_d1000.npy', matrix_type='npy'))
 print(e.evaluate(matrix_path='../matrix2vec/output/vectors/specific/test.npy', matrix_type='npy'))
+print(e.evaluate(matrix_path='../matrix2vec/output/vectors/specific/m4.npy', matrix_type='npy'))
+print(e.evaluate(matrix_path='../matrix2vec/output/vectors/specific/m2.npy', matrix_type='npy'))
+print(e.evaluate(matrix_path='../matrix2vec/output/vectors/specific/m3.npy', matrix_type='npy'))
