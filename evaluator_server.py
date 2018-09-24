@@ -52,6 +52,7 @@ def evaluate_folder(folder_path, file_prefix):
 
 # evaluate_folder(folder_path='../matrix2vec/output/vectors/cooc_normalized_svd/', file_prefix='cooc_normalized_svd_')
 # evaluate_folder(folder_path='../matrix2vec/output/vectors/firstOrder_normalized_svd/', file_prefix='firstOrder_normalized_svd_')
+evaluate_folder(folder_path='../matrix2vec/output/vectors/firstOrder_normalized_smoothed_svd/', file_prefix='firstOrder_normalized_smoothed_svd_')
 # evaluate_folder(folder_path='../matrix2vec/output/vectors/rw0_normalized_svd/', file_prefix='rw0_normalized_svd_')
 # evaluate_folder(folder_path='../matrix2vec/output/vectors/rw1_normalized_svd/', file_prefix='rw1_normalized_svd_')
 # evaluate_folder(folder_path='../matrix2vec/output/vectors/rw2_normalized_svd/', file_prefix='rw2_normalized_svd_')
@@ -108,7 +109,8 @@ def evaluate_folder_bis(folder_path, window_size, file_name_prefix):
 '''
 specific
 '''
-e = evaluator.Evaluator.from_storage(tokens_path='../matrix2vec/input/encoded_edges_count_window_size_5_undirected_tokens.pickle')
-print(e.evaluate(matrix_path='../matrix2vec/output/vectors/specific/specific_k-1_svd_d500.npy', matrix_type='npy'))
-print(e.evaluate(matrix_path='../matrix2vec/output/vectors/specific/specific_k-1_svd_d800.npy', matrix_type='npy'))
-print(e.evaluate(matrix_path='../matrix2vec/output/vectors/specific/specific_k-1_svd_d1000.npy', matrix_type='npy'))
+
+# e = evaluator.Evaluator.from_storage(tokens_path='../matrix2vec/input/encoded_edges_count_window_size_5_undirected_tokens.pickle')
+# print(e.evaluate(matrix_path='../matrix2vec/output/vectors/specific/specific_k-1_svd_d500.npy', matrix_type='npy'))
+# print(e.evaluate(matrix_path='../matrix2vec/output/vectors/specific/specific_k-1_svd_d800.npy', matrix_type='npy'))
+# print(e.evaluate(matrix_path='../matrix2vec/output/vectors/specific/specific_k-1_svd_d1000.npy', matrix_type='npy'))
