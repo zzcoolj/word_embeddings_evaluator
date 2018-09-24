@@ -51,8 +51,9 @@ def evaluate_folder(folder_path, file_prefix):
 
 
 # evaluate_folder(folder_path='../matrix2vec/output/vectors/cooc_normalized_svd/', file_prefix='cooc_normalized_svd_')
+evaluate_folder(folder_path='../matrix2vec/output/vectors/cooc_normalized_smoothed_svd/', file_prefix='cooc_normalized_smoothed_svd_')
 # evaluate_folder(folder_path='../matrix2vec/output/vectors/firstOrder_normalized_svd/', file_prefix='firstOrder_normalized_svd_')
-evaluate_folder(folder_path='../matrix2vec/output/vectors/firstOrder_normalized_smoothed_svd/', file_prefix='firstOrder_normalized_smoothed_svd_')
+# evaluate_folder(folder_path='../matrix2vec/output/vectors/firstOrder_normalized_smoothed_svd/', file_prefix='firstOrder_normalized_smoothed_svd_')
 # evaluate_folder(folder_path='../matrix2vec/output/vectors/rw0_normalized_svd/', file_prefix='rw0_normalized_svd_')
 # evaluate_folder(folder_path='../matrix2vec/output/vectors/rw1_normalized_svd/', file_prefix='rw1_normalized_svd_')
 # evaluate_folder(folder_path='../matrix2vec/output/vectors/rw2_normalized_svd/', file_prefix='rw2_normalized_svd_')
