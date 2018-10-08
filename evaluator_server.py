@@ -115,17 +115,9 @@ e = evaluator.Evaluator.from_storage(tokens_path='../matrix2vec/input/encoded_ed
 # print(e.evaluate(matrix_path='../matrix2vec/output/vectors/specific/specific_k-1_svd_d500.npy', matrix_type='npy'))
 # print(e.evaluate(matrix_path='../matrix2vec/output/vectors/specific/specific_k-1_svd_d800.npy', matrix_type='npy'))
 # print(e.evaluate(matrix_path='../matrix2vec/output/vectors/specific/specific_k-1_svd_d1000.npy', matrix_type='npy'))
-print(e.evaluate(matrix_path='../matrix2vec/output/vectors/specific/test.npy', matrix_type='npy'))
-print(e.evaluate(matrix_path='../matrix2vec/output/vectors/specific/m2_300.npy', matrix_type='npy'))
-print(e.evaluate(matrix_path='../matrix2vec/output/vectors/specific/m2_500.npy', matrix_type='npy'))
-print(e.evaluate(matrix_path='../matrix2vec/output/vectors/specific/m2_700.npy', matrix_type='npy'))
-print(e.evaluate(matrix_path='../matrix2vec/output/vectors/specific/m2_900.npy', matrix_type='npy'))
-print(e.evaluate(matrix_path='../matrix2vec/output/vectors/specific/m2_900.npy', matrix_type='npy'))
 
-print('-------------------')
-
-print(e.evaluate(matrix_path='../matrix2vec/output/vectors/specific/m3.npy', matrix_type='npy'))
 print(e.evaluate(matrix_path='../matrix2vec/output/vectors/specific/m4_300.npy', matrix_type='npy'))
 print(e.evaluate(matrix_path='../matrix2vec/output/vectors/specific/m4_500.npy', matrix_type='npy'))
 print(e.evaluate(matrix_path='../matrix2vec/output/vectors/specific/m4_700.npy', matrix_type='npy'))
 print(e.evaluate(matrix_path='../matrix2vec/output/vectors/specific/m4_900.npy', matrix_type='npy'))
+print(e.evaluate(matrix_path='../matrix2vec/output/vectors/specific/m4_1000.npy', matrix_type='npy'))
