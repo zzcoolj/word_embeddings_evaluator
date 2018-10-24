@@ -52,9 +52,9 @@ class Evaluator(object):
         # evaluation results
         labels1, results1 = self.evaluation_questions_words(gensim_word_vectors)
         # self.print_lables_results(labels1, results1)
-        labels2, results2 = self.evaluation_word_pairs(gensim_word_vectors, evaluation_data_path='data/wordsim353/combined.tab')
+        labels2, results2 = self.evaluation_word_pairs(gensim_word_vectors, evaluation_data_path='~/Code/word_embeddings_evaluator/data/wordsim353/combined.tab')
         # eval.print_lables_results(labels2, results2)
-        labels3, results3 = self.evaluation_word_pairs(gensim_word_vectors, evaluation_data_path='data/simlex999.txt')
+        labels3, results3 = self.evaluation_word_pairs(gensim_word_vectors, evaluation_data_path='~/Code/word_embeddings_evaluator/data/simlex999.txt')
         # eval.print_lables_results(labels3, results3)
         return results2 + results3 + results1
 
