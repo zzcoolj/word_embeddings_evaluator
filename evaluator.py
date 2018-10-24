@@ -69,7 +69,7 @@ class Evaluator(object):
         print(to_print)
 
     @staticmethod
-    def evaluation_questions_words(gensim_word_vectors, evaluation_data_path='data/questions-words.txt'):
+    def evaluation_questions_words(gensim_word_vectors, evaluation_data_path='~/Code/word_embeddings_evaluator/data/questions-words.txt'):
         accuracy = gensim_word_vectors.accuracy(evaluation_data_path)  # 4478
 
         sem_correct = sum((len(accuracy[i]['correct']) for i in range(5)))
