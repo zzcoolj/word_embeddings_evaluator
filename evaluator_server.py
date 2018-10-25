@@ -31,7 +31,7 @@ def evaluate_folder(folder_path, file_prefix):
     for w in range(2, 11):
         e = evaluator.Evaluator.from_storage(
             tokens_path='../matrix2vec/input/encoded_edges_count_window_size_' + str(w) + '_undirected_tokens.pickle')
-        for d in [200, 500, 800, 1000]:
+        for d in [500, 700, 1000]:
             file_name = file_prefix + 'w' + str(w) + '_d' + str(d)
             result = e.evaluate(folder_path + file_name + '.npy', matrix_type='npy')
             df.loc[i] = [file_name] + result
