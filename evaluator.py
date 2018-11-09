@@ -130,6 +130,46 @@ class Evaluator(object):
         df.to_excel(writer, 'Sheet1')
         writer.save()
 
+    @staticmethod
+    def get_evaluate_tokens_sim(file_path, output_path, case_insensitive=True):
+        """
+        Get all distinct tokens used in the evaluation dataset. for 353 & 999
+        """
+        tokens = set()
+        with open(file_path) as f:
+            for line in f:
+                if line.startswith('#'):
+                    continue
+                else:
+                    if case_insensitive:
+                        a, b, sim = [word.lower() for word in line.split('\t')]
+                    else:
+                        a, b, sim = [word for word in line.split('\t')]
+                    tokens.add(a)
+                    tokens.add(b)
+        common.write_simple_list_to_file(output_path, list(tokens))
+
+    @staticmethod
+    def get_evaluate_tokens_analogy(file_path, output_path, case_insensitive=True):
+        """
+        Get all distinct tokens used in the evaluation dataset. for google word analogy dataset
+        """
+        tokens = set()
+        with open(file_path) as f:
+            for line in f:
+                if line.startswith(':'):
+                    continue
+                else:
+                    if case_insensitive:
+                        a, b, c, d = [word.lower() for word in line.strip().split(' ')]
+                    else:
+                        a, b, c, d = [word for word in line.strip().split(' ')]
+                    tokens.add(a)
+                    tokens.add(b)
+                    tokens.add(c)
+                    tokens.add(d)
+        common.write_simple_list_to_file(output_path, list(tokens))
+
 
 def get_index2word(file, key_type=int, value_type=str):
     """ATTENTION
