@@ -134,6 +134,7 @@ class Evaluator(object):
     def get_evaluate_tokens_sim(file_path, output_path, case_insensitive=True):
         """
         Get all distinct tokens used in the evaluation dataset. for 353 & 999
+        ATTENTION: for wordsim353/combined.tab, first explanation line doesn't have '#' (Word 1	Word 2	Human (mean))
         """
         tokens = set()
         with open(file_path) as f:
