@@ -151,11 +151,12 @@ class Evaluator(object):
         common.write_simple_list_to_file(output_path, list(tokens))
 
     @staticmethod
-    def get_evaluate_tokens_analogy(file_path, output_path, case_insensitive=True):
+    def get_evaluate_tokens_analogy(output_path, file_path='data/questions-words.txt', case_insensitive=True):
         """
         Get all distinct tokens used in the evaluation dataset. for google word analogy dataset
         """
         tokens = set()
+        to_exclude = set()
         with open(file_path) as f:
             for line in f:
                 if line.startswith(':'):
@@ -168,8 +169,8 @@ class Evaluator(object):
                     tokens.add(a)
                     tokens.add(b)
                     tokens.add(c)
-                    tokens.add(d)
-        common.write_simple_list_to_file(output_path, list(tokens))
+                    to_exclude.add(d)
+        common.write_simple_list_to_file(output_path, list(tokens-to_exclude))
 
 
 def get_index2word(file, key_type=int, value_type=str):

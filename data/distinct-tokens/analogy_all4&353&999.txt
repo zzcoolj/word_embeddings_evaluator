@@ -1003,7 +1003,6 @@ architecture
 live
 year
 shower
-word 1
 prejudice
 radio
 benchmark
@@ -1332,7 +1331,6 @@ withdrawal
 secretary
 substance
 mexico
-word 2
 street
 depression
 chord
