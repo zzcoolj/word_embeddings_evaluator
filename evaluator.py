@@ -56,6 +56,7 @@ class Evaluator(object):
         # eval.print_lables_results(labels2, results2)
         labels3, results3 = self.evaluation_word_pairs(gensim_word_vectors, evaluation_data_path='~/Code/word_embeddings_evaluator/data/simlex999.txt')
         # eval.print_lables_results(labels3, results3)
+        # labels4, results4 = self.evaluation_word_pairs(gensim_word_vectors, evaluation_data_path='~/Code/word_embeddings_evaluator/data/MTURK-771.csv', delimiter=',')
         return results2 + results3 + results1
 
     @staticmethod
@@ -90,14 +91,14 @@ class Evaluator(object):
         return labels, results
 
     @staticmethod
-    def evaluation_word_pairs(gensim_word_vectors, evaluation_data_path):
+    def evaluation_word_pairs(gensim_word_vectors, evaluation_data_path, delimiter='\t'):
         """ Result of evaluate_word_pairs contains 3 parts:
         ((0.43915524919358867, 2.3681259690228147e-13),                                     Pearson
         SpearmanrResult(correlation=0.44614214937080449, pvalue=8.8819867392097872e-14),    Spearman
         28.328611898016998)                                                                 ratio of pairs with unknown
                                                                                             words (float)
         """
-        evaluation = gensim_word_vectors.evaluate_word_pairs(evaluation_data_path)
+        evaluation = gensim_word_vectors.evaluate_word_pairs(evaluation_data_path, delimiter=delimiter)
         labels = ['Pearson correlation', 'Pearson pvalue', 'Spearman correlation', 'Spearman pvalue',
                   'Ration of pairs with OOV']
         results = [evaluation[0][0], evaluation[0][1], evaluation[1][0], evaluation[1][1], evaluation[2]]
