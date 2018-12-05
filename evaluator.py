@@ -87,7 +87,7 @@ class Evaluator(object):
         total_acc = sum_corr / total * 100
 
         labels = ['sem_acc', '#sem', 'syn_acc', '#syn', 'total_acc', '#total']
-        results = [sem_acc, sem_total, syn_acc, syn_total, total_acc, total]
+        results = [sem_acc/100, sem_total, syn_acc/100, syn_total, total_acc/100, total]
         return labels, results
 
     @staticmethod
