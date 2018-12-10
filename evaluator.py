@@ -132,7 +132,7 @@ class Evaluator(object):
         writer.save()
 
     @staticmethod
-    def get_evaluate_tokens_sim(file_path, output_path, case_insensitive=True):
+    def get_evaluate_tokens_sim(file_path, output_path, separator='\t', case_insensitive=True):
         """
         Get all distinct tokens used in the evaluation dataset. for 353 & 999
         ATTENTION: for wordsim353/combined.tab, first explanation line doesn't have '#' (Word 1	Word 2	Human (mean))
@@ -144,9 +144,9 @@ class Evaluator(object):
                     continue
                 else:
                     if case_insensitive:
-                        a, b, sim = [word.lower() for word in line.split('\t')]
+                        a, b, sim = [word.lower() for word in line.split(separator)]
                     else:
-                        a, b, sim = [word for word in line.split('\t')]
+                        a, b, sim = [word for word in line.split(separator)]
                     tokens.add(a)
                     tokens.add(b)
         common.write_simple_list_to_file(output_path, list(tokens))
